@@ -1,7 +1,7 @@
 [package]
 name = "forrust"
 version = "0.1.0"
-authors = ["RegaladoEdgar <edgar.regalado18@tectijuana.edu.mx>"]
+authors = ["diespeso <regalado.correo@gmail.com>"]
 edition = "2018"
 description = "very dumb, not yet usable package for time series forecasting"
 license = "MIT"
