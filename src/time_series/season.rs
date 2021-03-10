@@ -81,7 +81,7 @@ impl Season {
 
     /// Returns a clone of the current style
     pub fn style(&self) -> Style {
-        self.series.style.clone()
+        self.series.style()
     }
 
     /// Returns a mut ref to this Season's plot style

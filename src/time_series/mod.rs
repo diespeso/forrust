@@ -1,6 +1,8 @@
 pub mod season;
+pub mod moving_median;
 
 pub use season::Season;
+pub use moving_median::MovingMedian;
 use crate::plotable::Plotable;
 
 use std::fmt;
@@ -27,8 +29,9 @@ impl TimeSeries {
             dom_ran: None,
             style: Default::default()
         }
-    }
+    }    
 
+    /// Returns all (x,y) values
     fn get_data(&self) ->Vec<(f64, f64)> {
         let mut vec = Vec::new();
         for i in 0..self.data.len() {
@@ -39,8 +42,17 @@ impl TimeSeries {
         vec
     }
 
+    /// Returns all y values
+    pub fn get_range(&self) -> Vec<f64> {
+        self.data.clone()
+    }
+
     pub fn style(&self) -> Style {
         self.style.clone()
+    }
+
+    pub fn len(&self) -> usize {
+        self.data.len()
     }
 }
 
