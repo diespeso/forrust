@@ -31,16 +31,16 @@
 <line stroke="black" stroke-width="1" x1="0" x2="480" y1="0" y2="0"/>
 <g>
 <text font-size="12" text-anchor="middle" x="0" y="20">
-0
+1
 </text>
 <text font-size="12" text-anchor="middle" x="147.69230769230768" y="20">
-4
+5
 </text>
 <text font-size="12" text-anchor="middle" x="295.38461538461536" y="20">
-8
+9
 </text>
 <text font-size="12" text-anchor="middle" x="443.0769230769231" y="20">
-12
+13
 </text>
 </g>
 <text font-size="12" text-anchor="middle" x="240" y="30">
