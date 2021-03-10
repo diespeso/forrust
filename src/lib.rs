@@ -41,10 +41,16 @@ mod tests {
         Page::single(
             series.plot().as_ref()
         ).save("serie_total.svg").unwrap();
-        let mut season = Season::new(&series, 12).set_season(2);
+        let mut season = Season::new(&series, 12).set_season(1);
         Page::single(
             season.plot().as_ref()
         ).save("seriedemanda_anio_2.svg").unwrap();
+        println!("{:?}", season.get_data());
+
+        let mut season2 = Season::new(&season.as_time_series(), 6).set_season(1);
+        Page::single(
+            season2.plot().as_ref()
+        ).save("seriedemanda_time2.svg").unwrap();
         println!("{:?}", season.get_data());
     }
 }

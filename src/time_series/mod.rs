@@ -8,6 +8,7 @@ use std::fmt;
 use plotlib::view::{View, CategoricalView, ContinuousView};
 use plotlib::repr::{Plot, CategoricalRepresentation};
 use plotlib::style::{PointStyle, LineStyle, PointMarker};
+
 /// Holds the data of the series
 /// its implied that every unit of data represents a unit of time
 #[derive(Clone)]
