@@ -1,0 +1,86 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(72, 364)">
+<g>
+<g>
+<path d="M0,-204 L0,-204 L34.285713,-136 L68.57143,-136 L102.85714,-136 L137.14285,-272 L171.42857,-272 L205.71428,-136 L240,-136 L274.2857,-204 L308.57144,-340 L342.85715,-340 L377.14285,-136 L411.42856,-68 L445.7143,0 L480,-68" fill="none" stroke="#000000" stroke-linejoin="round" stroke-width="2"/>
+</g>
+<g>
+<circle cx="0" cy="-204" fill="#000000" r="5"/>
+<circle cx="34.285714285714285" cy="-136" fill="#000000" r="5"/>
+<circle cx="68.57142857142857" cy="-136" fill="#000000" r="5"/>
+<circle cx="102.85714285714286" cy="-136" fill="#000000" r="5"/>
+<circle cx="137.14285714285714" cy="-272" fill="#000000" r="5"/>
+<circle cx="171.42857142857142" cy="-272" fill="#000000" r="5"/>
+<circle cx="205.71428571428572" cy="-136" fill="#000000" r="5"/>
+<circle cx="240" cy="-136" fill="#000000" r="5"/>
+<circle cx="274.2857142857143" cy="-204" fill="#000000" r="5"/>
+<circle cx="308.57142857142856" cy="-340" fill="#000000" r="5"/>
+<circle cx="342.85714285714283" cy="-340" fill="#000000" r="5"/>
+<circle cx="377.14285714285717" cy="-136" fill="#000000" r="5"/>
+<circle cx="411.42857142857144" cy="-68" fill="#000000" r="5"/>
+<circle cx="445.7142857142857" cy="0" fill="#000000" r="5"/>
+<circle cx="480" cy="-68" fill="#000000" r="5"/>
+</g>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="137.14285714285714" x2="137.14285714285714" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="274.2857142857143" x2="274.2857142857143" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="411.42857142857144" x2="411.42857142857144" y1="0" y2="10"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="480" y1="0" y2="0"/>
+<g>
+<text font-size="12" text-anchor="middle" x="0" y="20">
+2
+</text>
+<text font-size="12" text-anchor="middle" x="137.14285714285714" y="20">
+6
+</text>
+<text font-size="12" text-anchor="middle" x="274.2857142857143" y="20">
+10
+</text>
+<text font-size="12" text-anchor="middle" x="411.42857142857144" y="20">
+14
+</text>
+</g>
+<text font-size="12" text-anchor="middle" x="240" y="30">
+
+</text>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="0" y2="0"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-68" y2="-68"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-136" y2="-136"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-204" y2="-204"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-272" y2="-272"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-340" y2="-340"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="-340"/>
+<g>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="0">
+50
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-68">
+60
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-136">
+70
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-204">
+80
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-272">
+90
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-340">
+100
+</text>
+</g>
+<text font-size="12" text-anchor="middle" transform="rotate(-90 -36 -170)" x="-36" y="-182">
+
+</text>
+</g>
+</g>
+</svg>

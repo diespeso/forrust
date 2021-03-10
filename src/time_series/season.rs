@@ -55,6 +55,21 @@ impl Season {
         }       
     }
 
+    pub fn as_time_series(&self) -> TimeSeries {
+        TimeSeries::new(self.get_range())
+    }
+
+    pub fn get_range(&self) -> Vec<f64> {
+        if self.data.is_none() {
+            panic!("can't get domain from empty season");
+        }
+        let mut v = Vec::new();
+        for i in 0..self.data.as_ref().unwrap().len() {
+            v.push(self.data.as_ref().unwrap()[i].1); //ys
+        }
+        v
+    }
+
     /// Returns the set of (x, y) points that represent this season
     pub fn get_data(&self) -> Vec<(f64, f64)> {
         if let Some(data) = &self.data {
@@ -66,7 +81,7 @@ impl Season {
 
     /// Returns a clone of the current style
     pub fn style(&self) -> Style {
-        self.series.style.clone()
+        self.series.style()
     }
 
     /// Returns a mut ref to this Season's plot style
