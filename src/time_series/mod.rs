@@ -1,3 +1,6 @@
+pub mod season;
+
+pub use season::Season;
 use crate::plotable::Plotable;
 
 use std::fmt;
@@ -7,10 +10,11 @@ use plotlib::repr::{Plot, CategoricalRepresentation};
 use plotlib::style::{PointStyle, LineStyle, PointMarker};
 /// Holds the data of the series
 /// its implied that every unit of data represents a unit of time
+#[derive(Clone)]
 pub struct TimeSeries {
     data: Vec<f64>,
     dom_ran: Option<(String, String)>,
-    style: Option<(Option<PointStyle>, Option<LineStyle>)>
+    style: Style,
 }
 
 impl TimeSeries {
@@ -20,11 +24,7 @@ impl TimeSeries {
         Self {
             data: data,
             dom_ran: None,
-            style: Some(
-                (Some(PointStyle::new().colour("#000000").marker(PointMarker::Circle)),
-                Some(LineStyle::new().colour("#000000"))
-                )   
-            )
+            style: Default::default()
         }
     }
 
@@ -32,10 +32,29 @@ impl TimeSeries {
         let mut vec = Vec::new();
         for i in 0..self.data.len() {
             vec.push(
-                (i as f64, self.data[i] as f64)
+                ((i + 1 as usize) as f64, self.data[i] as f64)
             );
         }
         vec
+    }
+
+    pub fn style(&self) -> Style {
+        self.style.clone()
+    }
+}
+
+#[derive(Clone)]
+pub struct Style{
+    pub point: PointStyle,
+    pub line: LineStyle,
+}
+
+impl Default for Style {
+    fn default() -> Self {
+        Self {
+            point: PointStyle::new().colour("#000000").marker(PointMarker::Circle),
+            line: LineStyle::new().colour("#000000")
+        }
     }
 }
 
@@ -43,28 +62,17 @@ impl TimeSeries {
 impl Plotable for TimeSeries {
     fn plot(&self) -> Box<dyn View> {
         let mut plot = Plot::new(self.get_data_repr());
-        if let Some(styles) = &self.style {
-            if let Some(pointstyle) = &styles.0 {
-                plot = plot.point_style(pointstyle.clone());
-            }
-            if let Some(linestyle) = &styles.1 {
-                plot = plot.line_style(linestyle.clone());
-            }
-        }
+        plot = plot.point_style(self.style().point).line_style(self.style().line);
         let mut view = ContinuousView::new()
         .add(plot);
         Box::new(view)
     }
 }
 
-/// Reprents a repeteable domain
-pub struct CustomDomain {
-
-}
 
 /// Un Mes del año.
 #[derive(Copy, Clone, Debug)]
-enum Mes {
+pub enum Mes {
     Enero,
     Febrero,
     Marzo,
