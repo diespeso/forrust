@@ -28,7 +28,7 @@ impl TimeSeries {
         }
     }
 
-    fn get_data_repr(&self) ->Vec<(f64, f64)> {
+    fn get_data(&self) ->Vec<(f64, f64)> {
         let mut vec = Vec::new();
         for i in 0..self.data.len() {
             vec.push(
@@ -61,7 +61,7 @@ impl Default for Style {
 
 impl Plotable for TimeSeries {
     fn plot(&self) -> Box<dyn View> {
-        let mut plot = Plot::new(self.get_data_repr());
+        let mut plot = Plot::new(self.get_data());
         plot = plot.point_style(self.style().point).line_style(self.style().line);
         let mut view = ContinuousView::new()
         .add(plot);
