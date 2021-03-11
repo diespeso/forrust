@@ -14,7 +14,7 @@ pub struct Season {
 
 impl Season {
     /// Takes a reference to a time series to create a Season from it
-    /// Also takes the length fo that season.
+    /// Also takes the length for that season.
     pub fn new(series: &TimeSeries, length: usize) -> Self {
         Self {
             series: series.clone(),

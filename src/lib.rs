@@ -1,3 +1,9 @@
+/// This library was made by Edgar Regalado
+/// its under the MIT License
+/// may not be useful.
+/// don't complain.
+
+
 //pub mod data;
 pub mod plotable;
 pub mod time_series;
@@ -45,13 +51,13 @@ mod tests {
         Page::single(
             season.plot().as_ref()
         ).save("seriedemanda_anio_2.svg").unwrap();
-        println!("{:?}", season.get_data());
+       // println!("{:?}", season.get_data());
 
         let mut season2 = Season::new(&season.as_time_series(), 4).set_season(2);
         Page::single(
             season2.plot().as_ref()
         ).save("seriedemanda_time2.svg").unwrap();
-        println!("{:?}", season.get_data());
+        //println!("{:?}", season.get_data());
     }
 
     use crate::time_series::MovingMedian;
@@ -67,5 +73,48 @@ mod tests {
         Page::single(
             medians.plot().as_ref()
         ).save("median_result.svg").unwrap();
+    }
+
+    use crate::time_series::Merger;
+    #[test]
+    fn test_merger() {
+        let demanda = [120.0, 80.0, 70.0, 60.0, 70.0, 90.0, 90.0,
+        60.0, 70.0, 80.0, 100.0, 120.0];
+        let series = TimeSeries::new(demanda.to_vec());
+        Page::single(
+            series.plot().as_ref()
+        ).save("median_origin.svg").unwrap();
+
+        let demanda2 = [100.0, 60.0, 80.0, 80.0, 90.0, 100.0, 80.0,
+        90.0, 50.0, 40.0, 70.0, 80.0];
+
+        let demanda3 = [90.0, 50.0, 70.0, 80.0, 80.0, 120.0, 100.0,
+        120.0, 70.0, 70.0, 90.0, 120.0];
+
+        let t2 = TimeSeries::new(demanda2.to_vec());
+        let t3 = TimeSeries::new(demanda3.to_vec());
+
+        let mut merger = Merger::new(&series).merge_with(&t2);
+        Page::single(
+            merger.as_time_series().plot().as_ref()
+        ).save("merged2.svg").unwrap();
+        
+        merger = merger.merge_with(&t3);
+        println!("{:?}", merger.as_time_series().get_data());
+        Page::single(
+            merger.as_time_series().plot().as_ref() //merger dropped
+        ).save("merged3.svg").unwrap();
+
+        let filtered_merger = MovingMedian::new(&merger.as_time_series());
+        println!("{:?}", filtered_merger.get_data());
+        Page::single(
+            filtered_merger.plot().as_ref()
+        ).save("merged3_moving_medians.svg").unwrap();
+
+        let filtered_second = MovingMedian::new(&filtered_merger.as_time_series());
+
+        Page::single(
+            filtered_second.plot().as_ref()
+        ).save("merged3_second_moving.svg").unwrap();
     }
 }
