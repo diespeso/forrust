@@ -87,12 +87,15 @@ impl MovingMedian {
 
 impl Plotable for MovingMedian {
     fn plot(&self) -> Box<dyn View> {
-        let v = self.get_data();
-        let mut plot = Plot::new(v);
-        plot = plot
-        .point_style(self.style().point)
-        .line_style(self.style().line);
+       let plot = self.as_plot();
 
         Box::new(ContinuousView::new().add(plot))
+    }
+
+    fn as_plot(&self) -> Plot {
+        let mut plot = Plot::new(self.get_data());
+        plot
+        .point_style(self.style().point)
+        .line_style(self.style().line)
     }
 }

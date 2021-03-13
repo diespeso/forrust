@@ -1,10 +1,13 @@
 pub mod season;
 pub mod moving_median;
 pub mod merger;
+pub mod grouper;
 
 pub use season::Season;
 pub use moving_median::MovingMedian;
 pub use merger::Merger;
+pub use grouper::Grouper;
+
 use crate::plotable::Plotable;
 
 use std::fmt;
@@ -91,6 +94,10 @@ impl TimeSeries {
         self.style.clone()
     }
 
+    pub fn style_mut(&mut self) -> &mut Style {
+        &mut self.style
+    }
+
     pub fn len(&self) -> usize {
         self.data.len()
     }
@@ -100,6 +107,15 @@ impl TimeSeries {
 pub struct Style{
     pub point: PointStyle,
     pub line: LineStyle,
+}
+
+impl Style {
+    pub fn from_color(color: &str) -> Self {
+        let mut style: Style = Default::default();
+        style.point = style.point.colour(color);
+        style.line = style.line.colour(color);
+        style
+    }
 }
 
 impl Default for Style {
@@ -114,11 +130,15 @@ impl Default for Style {
 
 impl Plotable for TimeSeries {
     fn plot(&self) -> Box<dyn View> {
-        let mut plot = Plot::new(self.get_data());
-        plot = plot.point_style(self.style().point).line_style(self.style().line);
+        let plot = self.as_plot();
         let mut view = ContinuousView::new()
         .add(plot);
         Box::new(view)
+    }
+
+    fn as_plot(&self) -> Plot {
+        let mut plot = Plot::new(self.get_data());
+        plot.point_style(self.style().point).line_style(self.style().line)
     }
 }
 
