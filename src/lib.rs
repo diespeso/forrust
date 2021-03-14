@@ -8,6 +8,7 @@
 pub mod plotable;
 pub mod time_series;
 pub mod parser;
+pub mod forecasting;
 
 #[cfg(test)]
 mod tests {
@@ -158,5 +159,30 @@ mod tests {
         Page::single(
             data_file_to_timeseries(DATA_FILE_NAME).plot().as_ref()
         ).save("datato.svg").unwrap();
+    }
+
+    use crate::forecasting::expsmooth::ExpSmoothing;
+    #[test]
+    pub fn test_expsmooth() {
+        let example = data_file_to_timeseries(DATA_FILE_NAME);
+
+        let mut smooth0_4 = ExpSmoothing::new(&example)
+        .with_alpha(0.4);
+        let mut smooth0_2 = smooth0_4.clone()
+        .with_alpha(0.2);
+        let mut smooth0_8 = smooth0_2.clone()
+        .with_alpha(0.8);
+
+        let group = Grouper::new(&example)
+        .add(&smooth0_4.as_time_series())
+        .last_with_style(Style::from_color("#ff0a9a"))
+        .add(&smooth0_2.as_time_series())
+        .last_with_style(Style::from_color("#00f10a"))
+        .add(&smooth0_8.as_time_series())
+        .last_with_style(Style::from_color("#aff550"));
+
+        Page::single(
+            group.plot().as_ref()
+        ).save("smoothed.svg").unwrap();
     }
 }
