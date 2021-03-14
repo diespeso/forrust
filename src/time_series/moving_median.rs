@@ -38,7 +38,7 @@ impl MovingMedian {
             vals[1] = self.series.get_range()[i];
             vals[2] = self.series.get_range()[i + 1];
             med.push(
-                ((i + 1) as f64, Self::get_middle_for_3(vals))
+                (self.series.get_data()[i].0 as f64, Self::get_middle_for_3(vals))
             );
         }
         self.data = Some(med);
