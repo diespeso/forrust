@@ -7,6 +7,7 @@
 //pub mod data;
 pub mod plotable;
 pub mod time_series;
+pub mod parser;
 
 #[cfg(test)]
 mod tests {
@@ -100,13 +101,11 @@ mod tests {
         ).save("merged2.svg").unwrap();
         
         merger = merger.merge_with(&t3);
-        println!("{:?}", merger.as_time_series().get_data());
         Page::single(
             merger.as_time_series().plot().as_ref() //merger dropped
         ).save("merged3.svg").unwrap();
 
         let filtered_merger = MovingMedian::new(&merger.as_time_series());
-        println!("{:?}", filtered_merger.get_data());
         Page::single(
             filtered_merger.plot().as_ref()
         ).save("merged3_moving_medians.svg").unwrap();
@@ -141,11 +140,6 @@ mod tests {
 
         let filtered = MovingMedian::new(&complete);
         let filtered2 = MovingMedian::new(&filtered.as_time_series());
-        println!("orig:{:?}\nfil_uno:{:?}\nfil_dos:{:?}",
-        complete.get_data(),
-        filtered.as_time_series().get_data(),
-        filtered2.as_time_series().get_data()
-        );
         let group = Grouper::new(&complete)
         .add(&filtered.as_time_series())
         .last_with_style(Style::from_color("#ff0000"))
@@ -155,5 +149,14 @@ mod tests {
         Page::single(
             group.plot().as_ref()
         ).save("series_filter.svg").unwrap()
+    }
+
+    use crate::parser::*;
+
+    #[test]
+    pub fn test_parser() {
+        Page::single(
+            data_file_to_timeseries(DATA_FILE_NAME).plot().as_ref()
+        ).save("datato.svg").unwrap();
     }
 }
