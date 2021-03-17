@@ -99,7 +99,9 @@ impl Dumb {
                 
             }
             println!("{:?}", x_points);
-            x_points = x_points[1..].iter().map(
+            //regression points used to get the distance between
+            //the regression line and the exponential smoothing signal
+            let regression_points: Vec<Vec<f64>> = x_points[1..].iter().map(
                 |x| {x.iter().map(
                     |y| {
                         println!("y: {:?}", y);
@@ -107,8 +109,17 @@ impl Dumb {
                     }
                 ).collect()}
             ).collect();
-            println!("{:?}", &x_points[1..]); //ignore january
-            //TODO: Calculate 
+            println!("{:?}", &regression_points[1..]); //ignore january
+            //TODO: Calculate distance between regression points
+            //and exponential smooting signal
+
+            //TODO: get the growth factors
+            //TODO: muffle growths: for 3 seasons use (0.4, 0.6) -> muffling factors
+            //TODO: new point: (muffled 1 + muffled 2) * last distance
+            //TODO: add noise to prediction signal, no noise algorithm yet
+            //TODO: calculate regression in new point
+            //TODO: add the combo (signal + noise) to the calculated regression point
+            //TODO(CHECK): If the values get too spiky, muffle with mean * alpha factor at +- random level
         } else {
             panic!("Can't update Dumbs data, no expsmooth set.");
         }
