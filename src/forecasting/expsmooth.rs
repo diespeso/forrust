@@ -59,6 +59,9 @@ impl ExpSmoothing {
     }
 
     pub fn get_data(&self) -> Vec<(f64, f64)> {
+        if self.alpha.is_none() {
+            panic!("Can't get data of ExpSmoothing with no alpha");
+        }
         self.smooth.clone()
     }
 
@@ -67,7 +70,7 @@ impl ExpSmoothing {
     }
 
     pub fn as_time_series(&self) -> TimeSeries {
-        TimeSeries::from_pairs_vec(self.smooth.clone())
+        TimeSeries::from_pairs_vec(self.get_data())
     }
 
     fn calculate_smooth(alpha: f64, last: f64, last_fore: f64) -> f64 {
@@ -75,6 +78,10 @@ impl ExpSmoothing {
             panic!("bad alpha argument for ExpSmooth");
         }
         alpha * last + (1.0 - alpha) * last_fore
+    }
+
+    pub fn alpha(&self) -> f64 {
+        self.alpha.expect("Couldn't get alpha from expsmooth: None")
     }
 
 }
