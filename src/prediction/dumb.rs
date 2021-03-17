@@ -6,6 +6,12 @@ const DEFAULT_ALPHA: f64 = 0.4;
 
 /// Takes an exponential smoothing and makes a dumb prediction
 /// of the next season
+/// This uses an algorithm i made up myself
+/// that takes to account the distances the exponential smoothing
+/// for each month relative to the linear regresion of a time series
+/// and calculates a growth factor thats 'a prediction' of the signal
+/// for the future, and thats when i use a random value to add
+/// some noise
 pub struct Dumb {
     original: TimeSeries,
     expsmooth: Option<ExpSmoothing>,
@@ -81,26 +87,28 @@ impl Dumb {
                     months[month][season] = past[season][month];
                 }
             }
-            println!("{:?}", months);
+            //println!("{:?}", months);
             //get distances
             let mut x_points = Vec::new();
             //x_points.push(vec![-1.0;past.len()]);//ignore first element: january
-            for i in 0..months.len() {//every month, its seasons, ignores first so i add one at the end to get 13= 12 + ignored
+            for i in 0..months.len() + 1 {//every month, its seasons
                 x_points.push(vec![0.0; past.len()]);
                 for season in 0..months[0].len() { //every season, every year
                     x_points[i][season] = (i + season*self.season) as f64;
                 }
                 
             }
-            x_points = x_points.iter().map(
+            println!("{:?}", x_points);
+            x_points = x_points[1..].iter().map(
                 |x| {x.iter().map(
                     |y| {
-                        println!("{:?}", y);
+                        println!("y: {:?}", y);
                         self.get_linear_regression().calculate(y.clone())
                     }
                 ).collect()}
             ).collect();
             println!("{:?}", &x_points[1..]); //ignore january
+            //TODO: Calculate 
         } else {
             panic!("Can't update Dumbs data, no expsmooth set.");
         }

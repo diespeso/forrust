@@ -223,6 +223,6 @@ mod tests {
         //let smooth = ExpSmoothing::new(&example).with_alpha(0.4);
         let mut dumb = Dumb::new(&example).with_season(12);
 
-        println!("{:?}", LinearRegression::new(&example).calculate(1.0));
+        println!("{:?}", LinearRegression::new(&example).calculate(2.0));
     }
 }
