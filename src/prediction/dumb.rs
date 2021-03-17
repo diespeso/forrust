@@ -45,7 +45,7 @@ impl Dumb {
         }
 
         let mut sm = self.exp_smooth().as_time_series().get_data();
-        sm.insert(0, (0.0, 0.0));
+        sm.insert(0, (1.0, -1.0));
         let sm = TimeSeries::from_pairs_vec(sm);
         //first, the boostrap
         //enero bootstrap
@@ -53,20 +53,20 @@ impl Dumb {
         if let Some(expsmooth) = &self.expsmooth {
             self.prediction = Vec::new(); //reset
             let alpha = expsmooth.alpha();
-            let len = self.original.len();
-            let r = alpha * self.original.get_range_at(len - 1) + (1.0 - alpha) * expsmooth.as_time_series().get_range_at(len - 1); //last
+            let len = sm.len();
+            let r = alpha * sm.get_range_at(len - 1) + (1.0 - alpha) * expsmooth.as_time_series().get_range_at(len - 1); //last
             
             self.prediction.push((1.0, r)); //first value just a boostrap
            
            //separating all months in sesons acording to season length (self.season)
             let mut past = Vec::new();
             let mut c = 1;
-            for seas in 0..(self.original.len() / self.season) as usize {
+            for seas in 0..(sm.len() / self.season) as usize {
                 //for every past season of each month
                 past.push(vec![0.0; self.season]);
                 for i in 0..self.season {
                     //for each point of this season
-                    past[seas][i] = self.original.get_range_at(c);
+                    past[seas][i] = sm.get_range_at(c);
                     c += 1;
                 }
                 
@@ -81,10 +81,32 @@ impl Dumb {
                     months[month][season] = past[season][month];
                 }
             }
-            //println!("{:?}", months);
+            println!("{:?}", months);
+            //get distances
+            let mut x_points = Vec::new();
+            //x_points.push(vec![-1.0;past.len()]);//ignore first element: january
+            for i in 0..months.len() {//every month, its seasons, ignores first so i add one at the end to get 13= 12 + ignored
+                x_points.push(vec![0.0; past.len()]);
+                for season in 0..months[0].len() { //every season, every year
+                    x_points[i][season] = (i + season*self.season) as f64;
+                }
+                
+            }
+            x_points = x_points.iter().map(
+                |x| {x.iter().map(
+                    |y| {
+                        println!("{:?}", y);
+                        self.get_linear_regression().calculate(y.clone())
+                    }
+                ).collect()}
+            ).collect();
+            println!("{:?}", &x_points[1..]); //ignore january
         } else {
             panic!("Can't update Dumbs data, no expsmooth set.");
         }
+
+
+
         
     }
 

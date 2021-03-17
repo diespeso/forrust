@@ -222,5 +222,7 @@ mod tests {
         //let reg = LinearRegression::new(&example);
         //let smooth = ExpSmoothing::new(&example).with_alpha(0.4);
         let mut dumb = Dumb::new(&example).with_season(12);
+
+        println!("{:?}", LinearRegression::new(&example).calculate(1.0));
     }
 }
