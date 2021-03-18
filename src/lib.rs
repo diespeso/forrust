@@ -224,5 +224,10 @@ mod tests {
         let mut dumb = Dumb::new(&example).with_season(12);
 
         println!("{:?}", LinearRegression::new(&example).calculate(2.0));
+
+        Page::single(
+            dumb.plot().as_ref()
+        ).save("prediction2.svg").unwrap();
+        println!("{:?}", dumb.prediction());
     }
 }
