@@ -3,7 +3,7 @@ use std::io::prelude::*;
 
 use crate::time_series::TimeSeries;
 
-pub const DATA_FILE_NAME: &str = "data.txt";
+pub const DATA_FILE_NAME: &str = "data4.txt";
 
 pub fn data_file_to_vec(file_name: &str) -> std::io::Result<Vec<(f64, f64)>>{
     let mut file = File::open(file_name)?;

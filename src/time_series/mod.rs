@@ -65,7 +65,7 @@ impl TimeSeries {
 
     /// returns the y value of this time series
     /// at the given x value
-    fn get_range_at(&self, u: usize) -> f64 {
+    pub fn get_range_at(&self, u: usize) -> f64 {
         for (x, y) in self.data.iter() {
             if *x as usize == u {
                 return *y;
@@ -75,7 +75,7 @@ impl TimeSeries {
     }
 
     /// returns the y value at the nth position
-    fn get_range_at_ord(&self, n: usize) -> f64 {
+    pub fn get_range_at_ord(&self, n: usize) -> f64 {
         self.get_data()[n].1
     }
 
@@ -83,6 +83,11 @@ impl TimeSeries {
     pub fn push(&mut self, data: f64) {
         let dom_last = self.data[self.data.len() - 1].0; //gets last domain number
         self.data.push(((dom_last + 1 as f64) , data)); //last domain + 1
+    }
+
+    pub fn with_push(mut self, data: f64) -> Self {
+        self.push(data);
+        self
     }
 
     /// Returns all y values

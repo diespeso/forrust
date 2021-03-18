@@ -4,6 +4,8 @@ use crate::plotable::Plotable;
 use plotlib::repr::Plot;
 use plotlib::view::{View, ContinuousView};
 
+
+#[derive(Clone)]
 /// represents a subset of the data
 pub struct Season {
     series: TimeSeries,
@@ -30,6 +32,23 @@ impl Season {
         self.update_data();
         self
     }
+    /*
+    /// Makes a new season, doesnt affect current one
+    pub fn get_season(&self, u: usize) -> Self {
+        let mut this = self.clone();
+        this.season = Some(u);
+        this.update_data();
+        this
+    }
+
+    pub fn get_all_seasons(&self) -> Vec<Season> {
+
+    }
+
+    /// How many seasons are there in the time series used to make this
+    pub fn calculate_season_number(&self) -> usize {
+        (self.series.len() as f64 / self.length as f64).ceil() as usize
+    }*/
 
     /// Makes the data that represents this season
     /// this inner function is called every time a new

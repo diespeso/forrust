@@ -9,6 +9,8 @@ pub mod plotable;
 pub mod time_series;
 pub mod parser;
 pub mod forecasting;
+pub mod regression;
+pub mod prediction;
 
 #[cfg(test)]
 mod tests {
@@ -168,21 +170,64 @@ mod tests {
 
         let mut smooth0_4 = ExpSmoothing::new(&example)
         .with_alpha(0.4);
-        let mut smooth0_2 = smooth0_4.clone()
+        //println!("{:?}", smooth0_4.as_time_series().get_data());
+        /*let mut smooth0_2 = smooth0_4.clone()
         .with_alpha(0.2);
         let mut smooth0_8 = smooth0_2.clone()
-        .with_alpha(0.8);
+        .with_alpha(0.8);*/
 
         let group = Grouper::new(&example)
-        .add(&smooth0_4.as_time_series())
-        .last_with_style(Style::from_color("#ff0a9a"))
-        .add(&smooth0_2.as_time_series())
+        .add(&smooth0_4.as_time_series()
+        .with_push(93.0)
+        .with_push(99.0)
+        .with_push(72.35)
+        .with_push(84.91)
+        .with_push(92.44)
+        .with_push(79.035)
+        .with_push(87.98)
+        )
+        .last_with_style(Style::from_color("#ff0a9a"));
+        /*.add(&smooth0_2.as_time_series())
         .last_with_style(Style::from_color("#00f10a"))
         .add(&smooth0_8.as_time_series())
-        .last_with_style(Style::from_color("#aff550"));
+        .last_with_style(Style::from_color("#aff550"));*/
 
         Page::single(
             group.plot().as_ref()
         ).save("smoothed.svg").unwrap();
+    }
+
+    use crate::regression::LinearRegression;
+    #[test]
+    pub fn test_linear_reg() {
+        let example = data_file_to_timeseries(DATA_FILE_NAME);
+        let reg = LinearRegression::new(&example);
+        let smooth = ExpSmoothing::new(&example).with_alpha(0.4);
+        
+        let group = Grouper::new(&example)
+        .add(&reg.as_time_series())
+        .last_with_style(Style::from_color("#ff00aa"))
+        .add(&smooth.as_time_series())
+        .last_with_style(Style::from_color("#a0fa33"));
+
+        Page::single(
+            group.plot().as_ref()
+        ).save("linear.svg").unwrap();
+    }
+
+    use crate::prediction::Dumb;
+    #[test]
+    pub fn test_dumb() {
+        let example = data_file_to_timeseries(DATA_FILE_NAME);
+        //let reg = LinearRegression::new(&example);
+        //let smooth = ExpSmoothing::new(&example).with_alpha(0.4);
+        let mut dumb = Dumb::new(&example).with_season(12);
+
+        println!("{:?}", LinearRegression::new(&example).calculate(2.0));
+
+        Page::single(
+            dumb.plot().as_ref()
+        ).save("prediction2.svg").unwrap();
+        println!("{:?}", dumb.prediction());
     }
 }
