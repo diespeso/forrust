@@ -1,0 +1,99 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(72, 364)">
+<g>
+<g>
+<path d="M0,-340 L0,-340 L20.869566,-170 L41.739132,-127.5 L62.608696,-85 L83.478264,-127.5 L104.347824,-212.5 L125.21739,-212.5 L146.08696,-85 L166.95653,-127.5 L187.82608,-170 L208.69565,-255 L229.56522,-340 L250.43478,-255 L271.30435,-85 L292.17392,-170 L313.0435,-170 L333.91306,-212.5 L354.78262,-255 L375.65216,-170 L396.52173,-212.5 L417.3913,-42.5 L438.26086,0 L459.13043,-127.5 L480,-170" fill="none" stroke="#000000" stroke-linejoin="round" stroke-width="2"/>
+</g>
+<g>
+<circle cx="0" cy="-340" fill="#000000" r="5"/>
+<circle cx="20.869565217391305" cy="-170" fill="#000000" r="5"/>
+<circle cx="41.73913043478261" cy="-127.5" fill="#000000" r="5"/>
+<circle cx="62.608695652173914" cy="-85" fill="#000000" r="5"/>
+<circle cx="83.47826086956522" cy="-127.5" fill="#000000" r="5"/>
+<circle cx="104.34782608695652" cy="-212.5" fill="#000000" r="5"/>
+<circle cx="125.21739130434783" cy="-212.5" fill="#000000" r="5"/>
+<circle cx="146.08695652173913" cy="-85" fill="#000000" r="5"/>
+<circle cx="166.95652173913044" cy="-127.5" fill="#000000" r="5"/>
+<circle cx="187.82608695652175" cy="-170" fill="#000000" r="5"/>
+<circle cx="208.69565217391303" cy="-255" fill="#000000" r="5"/>
+<circle cx="229.56521739130434" cy="-340" fill="#000000" r="5"/>
+<circle cx="250.43478260869566" cy="-255" fill="#000000" r="5"/>
+<circle cx="271.30434782608694" cy="-85" fill="#000000" r="5"/>
+<circle cx="292.17391304347825" cy="-170" fill="#000000" r="5"/>
+<circle cx="313.04347826086956" cy="-170" fill="#000000" r="5"/>
+<circle cx="333.9130434782609" cy="-212.5" fill="#000000" r="5"/>
+<circle cx="354.7826086956522" cy="-255" fill="#000000" r="5"/>
+<circle cx="375.6521739130435" cy="-170" fill="#000000" r="5"/>
+<circle cx="396.5217391304348" cy="-212.5" fill="#000000" r="5"/>
+<circle cx="417.39130434782606" cy="-42.5" fill="#000000" r="5"/>
+<circle cx="438.2608695652174" cy="0" fill="#000000" r="5"/>
+<circle cx="459.1304347826087" cy="-127.5" fill="#000000" r="5"/>
+<circle cx="480" cy="-170" fill="#000000" r="5"/>
+</g>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="83.47826086956522" x2="83.47826086956522" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="166.95652173913044" x2="166.95652173913044" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="250.43478260869566" x2="250.43478260869566" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="333.9130434782609" x2="333.9130434782609" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="417.39130434782606" x2="417.39130434782606" y1="0" y2="10"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="480" y1="0" y2="0"/>
+<g>
+<text font-size="12" text-anchor="middle" x="0" y="20">
+1
+</text>
+<text font-size="12" text-anchor="middle" x="83.47826086956522" y="20">
+5
+</text>
+<text font-size="12" text-anchor="middle" x="166.95652173913044" y="20">
+9
+</text>
+<text font-size="12" text-anchor="middle" x="250.43478260869566" y="20">
+13
+</text>
+<text font-size="12" text-anchor="middle" x="333.9130434782609" y="20">
+17
+</text>
+<text font-size="12" text-anchor="middle" x="417.39130434782606" y="20">
+21
+</text>
+</g>
+<text font-size="12" text-anchor="middle" x="240" y="30">
+
+</text>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="0" y2="0"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-85" y2="-85"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-170" y2="-170"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-255" y2="-255"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-340" y2="-340"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="-340"/>
+<g>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="0">
+40
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-85">
+60
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-170">
+80
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-255">
+100
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-340">
+120
+</text>
+</g>
+<text font-size="12" text-anchor="middle" transform="rotate(-90 -36 -170)" x="-36" y="-182">
+
+</text>
+</g>
+</g>
+</svg>
