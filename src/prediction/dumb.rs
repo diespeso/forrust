@@ -224,7 +224,7 @@ impl Dumb {
         }
     }
 
-    fn plot_to_file(&self, filename: String) {
+    pub fn plot_to_file(&self, filename: String) {
         Page::single(
             self.plot().as_ref()
         ).save(filename).unwrap();
