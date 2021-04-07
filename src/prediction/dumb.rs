@@ -7,6 +7,8 @@ use crate::time_series::Grouper;
 use plotlib::view::{View, ContinuousView};
 use plotlib::repr::Plot;
 
+use plotlib::page::Page;
+
 const DEFAULT_ALPHA: f64 = 0.4;
 
 /// Takes an exponential smoothing and makes a dumb prediction
@@ -220,6 +222,12 @@ impl Dumb {
         } else {
             panic!("Dumb has no exponential smoothing set")
         }
+    }
+
+    fn plot_to_file(&self, filename: String) {
+        Page::single(
+            self.plot().as_ref()
+        ).save(filename).unwrap();
     }
 }
 
