@@ -1,5 +1,5 @@
 # forrust
-very dumb, not yet usable package for time series forecasting
+Rust Library for Time Series processing and some basic manipulation
 
 2 12 month time series merged into one 
 ![](https://github.com/diespeso/forrust/blob/master/merged2.svg)
